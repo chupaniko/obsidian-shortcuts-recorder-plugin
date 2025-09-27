@@ -1,29 +1,21 @@
-import { Notice, Plugin } from "obsidian";
+import { Editor, Plugin } from "obsidian";
+import { ShortcutCaptureModal } from "./ui/ShortcutCaptureModal";
 
-export default class ShortcutRecorderPlugin extends Plugin {
-  private statusBarItemEl: HTMLElement | null = null;
-
+export default class ShortcutsRecorderPlugin extends Plugin {
   async onload(): Promise<void> {
-    console.log("Loading Shortcuts Recorder plugin");
-
-    this.statusBarItemEl = this.addStatusBarItem();
-    this.statusBarItemEl.setText("Shortcuts Recorder: Ready");
-
     this.addCommand({
-      id: "shortcuts-recorder-show-status",
-      name: "Show recorder status",
-      callback: () => {
-        new Notice("Shortcuts Recorder is ready to capture shortcuts.");
-      }
+      id: "capture-shortcut",
+      name: "Capture shortcut",
+      editorCallback: (editor: Editor) => {
+        const modal = new ShortcutCaptureModal(this.app, {
+          editor,
+          onComplete: (shortcut) => {
+            console.debug("Captured shortcut", shortcut);
+          },
+        });
+
+        modal.open();
+      },
     });
-  }
-
-  onunload(): void {
-    console.log("Unloading Shortcuts Recorder plugin");
-
-    if (this.statusBarItemEl) {
-      this.statusBarItemEl.remove();
-      this.statusBarItemEl = null;
-    }
   }
 }
