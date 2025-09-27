@@ -1,0 +1,21 @@
+{
+  "name": "obsidian-shortcuts-recorder-plugin",
+  "version": "0.1.0",
+  "description": "An Obsidian plugin for recording and managing keyboard shortcuts.",
+  "main": "main.js",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --platform=node --target=es2018 --external:obsidian --outfile=main.js"
+  },
+  "keywords": [
+    "obsidian",
+    "plugin",
+    "shortcuts"
+  ],
+  "author": "Obsidian Shortcuts Recorder Team",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.19.11",
+    "obsidian": "^1.5.7",
+    "typescript": "^5.4.5"
+  }
+}
