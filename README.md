@@ -2,6 +2,10 @@
 
 Record and manage keyboard shortcuts inside Obsidian.
 
+## Usage
+
+- Place the cursor immediately after a `%` character in any Markdown file to reveal the **Record keyboard shortcut** command from the editor menu. This works even outside Markdown tables.
+
 ## Installation
 
 1. Download `manifest.json` and `main.js` directly from this repository (for example, via the GitHub “Download raw file” option). Сompiling the project locally is **not required** for installing the plugin in Obsidian.
