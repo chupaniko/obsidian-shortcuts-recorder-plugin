@@ -1,0 +1,10 @@
+{
+  "id": "shortcuts-recorder",
+  "name": "Shortcuts Recorder",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "description": "Record and manage keyboard shortcuts inside Obsidian.",
+  "author": "Obsidian Shortcuts Recorder Team",
+  "authorUrl": "https://example.com",
+  "isDesktopOnly": false
+}
