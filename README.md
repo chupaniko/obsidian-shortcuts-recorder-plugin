@@ -4,11 +4,11 @@ Record and manage keyboard shortcuts inside Obsidian.
 
 ## Installation
 
-1. Download the latest release or build the plugin following the development instructions below.
-2. Copy the following files into your Obsidian vault under `.obsidian/plugins/obsidian-shortcuts-recorder-plugin/`:
+1. Download `manifest.json` and `main.js` directly from this repository (for example, via the GitHub “Download raw file” option). Сompiling the project locally is **not required** for installing the plugin in Obsidian.
+2. Copy the downloaded files into your Obsidian vault under `.obsidian/plugins/obsidian-shortcuts-recorder-plugin/`:
    - `manifest.json`
    - `main.js`
-   - `styles.css` (if present)
+   - `styles.css` (если появится в будущих версиях)
 3. Reload Obsidian or enable the plugin from **Settings → Community plugins**.
 
 ## Development
@@ -17,11 +17,11 @@ Record and manage keyboard shortcuts inside Obsidian.
    ```bash
    npm install
    ```
-2. Build the plugin:
+2. (Необязательно) Соберите плагин локально:
    ```bash
    npm run build
    ```
-3. The compiled `main.js` will be generated in the repository root. Copy it along with `manifest.json` into your test vault's plugin directory to try out the plugin.
+   Учтите, что собранный таким образом `main.js` предназначен для разработки и может отличаться от опубликованной версии. Для установки в рабочий Obsidian используйте файлы из репозитория, как описано выше.
 
 ## Project Structure
 
