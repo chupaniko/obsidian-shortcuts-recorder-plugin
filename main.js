@@ -239,7 +239,8 @@ var ShortcutRecorderPlugin = class extends import_obsidian2.Plugin {
         if (!cursor) {
           return;
         }
-        if (!this.isCursorInMarkdownTable(editor, cursor)) {
+        const isAfterPercent = this.isCursorAfterPercent(editor, cursor);
+        if (!isAfterPercent && !this.isCursorInMarkdownTable(editor, cursor)) {
           return;
         }
         menu.addItem((item) => {
@@ -293,5 +294,16 @@ var ShortcutRecorderPlugin = class extends import_obsidian2.Plugin {
     }
     const trimmed = line.trim();
     return /^\|?(\s*:?-+:?\s*\|)+\s*$/.test(trimmed);
+  }
+  isCursorAfterPercent(editor, cursor) {
+    var _a;
+    if (cursor.ch <= 0) {
+      return false;
+    }
+    const lineText = (_a = editor.getLine(cursor.line)) != null ? _a : "";
+    if (!lineText) {
+      return false;
+    }
+    return lineText.charAt(cursor.ch - 1) === "%";
   }
 };

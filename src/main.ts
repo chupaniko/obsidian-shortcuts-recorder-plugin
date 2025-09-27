@@ -28,7 +28,9 @@ export default class ShortcutRecorderPlugin extends Plugin {
           return;
         }
 
-        if (!this.isCursorInMarkdownTable(editor, cursor)) {
+        const isAfterPercent = this.isCursorAfterPercent(editor, cursor);
+
+        if (!isAfterPercent && !this.isCursorInMarkdownTable(editor, cursor)) {
           return;
         }
 
@@ -99,5 +101,18 @@ export default class ShortcutRecorderPlugin extends Plugin {
 
     const trimmed = line.trim();
     return /^\|?(\s*:?-+:?\s*\|)+\s*$/.test(trimmed);
+  }
+
+  private isCursorAfterPercent(editor: Editor, cursor: EditorPosition): boolean {
+    if (cursor.ch <= 0) {
+      return false;
+    }
+
+    const lineText = editor.getLine(cursor.line) ?? '';
+    if (!lineText) {
+      return false;
+    }
+
+    return lineText.charAt(cursor.ch - 1) === '%';
   }
 }
