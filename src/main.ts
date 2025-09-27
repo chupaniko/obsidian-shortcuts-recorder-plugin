@@ -37,7 +37,7 @@ export default class ShortcutRecorderPlugin extends Plugin {
             .setTitle('Record keyboard shortcut')
             .setIcon('keyboard')
             .onClick(() => {
-              this.captureService.openCaptureModal();
+              this.captureService.openCaptureModal(editor);
             });
         });
       })
